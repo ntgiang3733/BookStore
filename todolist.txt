@@ -1,0 +1,16 @@
+                                        LIST 1:
+-Order
+-Manager product
+-Manager account
+-Manager order
+
+
+-----------------------------------------------------------------------------------
+                                        LIST 2:
+-Login with fb, gg
+-Send email
+-Remember login
+-Forgot password
+-Show modal login/signup when ...
+-encrypt password
+-sync login-signup interface

@@ -26,6 +26,14 @@ public class AdminController {
     @Autowired
     private AccountDAO accountDAO;
 
+    //GET : show sign up page
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String signupHandler(Model model) {
+        AccountInfo accountInfo = new AccountInfo();
+        model.addAttribute("accountInfo", accountInfo);
+        return "signup";
+    }
+
     //Post : register new account
     @RequestMapping(value = {"/signup"}, method = RequestMethod.POST)
     public String signupSaveHandler(Model model, @ModelAttribute("accountInfo") @Validated AccountInfo accountForm,
@@ -34,6 +42,7 @@ public class AdminController {
         accountRegister = accountDAO.findAccount(accountForm.getUserName());
         if(accountRegister == null) {
             try {
+                accountForm.setUserRole(Account.ROLE_EMPLOYEE);
                 accountRegister = accountDAO.registerNewUserAccount(accountForm);
             } catch (Exception ex) {
                 ex.printStackTrace();
