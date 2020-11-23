@@ -7,6 +7,7 @@
 
 -----------------------------------------------------------------------------------
                                         LIST 2:
+-add/substract product in cart
 -Login with fb, gg
 -Send email
 -Remember login

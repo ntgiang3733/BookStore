@@ -75,7 +75,7 @@
                     <p class="price through">${productForm.price + 1}</p>
                     <hr class="offset-md">
 
-                    <button class="btn btn-primary rounded"> <i class="ion-bag"></i> Add to cart</button>
+                    <a href="${pageContext.request.contextPath}/buyProduct?code=${prInfo.code}" ><button class="btn btn-primary rounded"> <i class="ion-bag"></i> Add to cart</button></a>
                 </div>
             </div>
         </div>
@@ -102,7 +102,8 @@
                             <hr class="offset-sm">
 
                             <a href="${pageContext.request.contextPath}/productInfo?code=${prd.code}" ><button class="btn btn-link"> <i class="ion-android-open"></i> Details</button></a>
-                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+
+                            <a href="${pageContext.request.contextPath}/buyProduct?code=${prInfo.code}" ><button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button></a>
                         </div>
                     </div>
                 </div>
