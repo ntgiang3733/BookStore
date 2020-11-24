@@ -13,7 +13,9 @@
 
 <div class="toplinks">
     <a href="${pageContext.request.contextPath}/signup"> <i class="ion-person"></i> Registration</a>
-    <a href="#signin" data-toggle="modal" data-target="#Modal-SignIn"> <i class="ion-unlocked"></i> Sign In</a>
+    <c:if test="${pageContext.request.userPrincipal.name == null}">
+        <a href="#signin" data-toggle="modal" data-target="#Modal-SignIn"> <i class="ion-unlocked"></i> Sign In</a>
+    </c:if>
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <a href="${pageContext.request.contextPath}/accountInfo">${pageContext.request.userPrincipal.name}</a>
         <a href="${pageContext.request.contextPath}/logout">Logout</a>

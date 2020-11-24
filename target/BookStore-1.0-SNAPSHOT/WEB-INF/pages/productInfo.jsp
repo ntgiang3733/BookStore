@@ -64,7 +64,6 @@
             </div>
             <div class="col-sm-5 col-md-5 no-padding-xs">
                 <div class="caption">
-                    <img src="assets/img/brands/microsoft.png" alt="Microsoft" class="brand hidden-xs hidden-sm" />
 
                     <h1>${productForm.name}</h1>
                     <hr class="offset-md hidden-sm">
