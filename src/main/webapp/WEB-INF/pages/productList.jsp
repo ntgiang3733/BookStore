@@ -225,11 +225,11 @@
                         <div class="col-sm-6 col-md-4 product">
                             <div class="body">
                                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-                                <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}"><img src="assets/img/products/apple-imac-27-retina.jpg" alt="Apple iMac 27 Retina"/></a>
+                                <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}"><img src="assets/img/products/${prInfo.name}.jpg" alt="Apple iMac 27 Retina"/></a>
 
                                 <div class="content">
                                     <h1 class="h3">${prInfo.name }</h1>
-                                    <p class="price">${prInfo.price}</p>
+                                    <p class="price">${prInfo.price} $</p>
                                     <label>${prInfo.category.name}</label>
 
                                     <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}" ><button class="btn btn-link"> <i class="ion-android-open"></i> Details</button></a>

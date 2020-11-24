@@ -21,19 +21,19 @@
 
 
                         <div class="item center" data-marker="1">
-                            <img src="assets/img/product/1.jpg" alt="Microsoft Surface Studio" class="background"/>
+                            <img src="assets/img/products/${productForm.name}.jpg" alt="Microsoft Surface Studio" class="background"/>
                         </div>
 
                         <div class="item" data-marker="2">
-                            <img src="assets/img/product/2.jpg" alt="Microsoft Surface Studio" class="background"/>
+                            <img src="assets/img/products/${productForm.name}.jpg" alt="Microsoft Surface Studio" class="background"/>
                         </div>
 
                         <div class="item" data-marker="3">
-                            <img src="assets/img/product/3.jpg" alt="Microsoft Surface Studio" class="background"/>
+                            <img src="assets/img/products/${productForm.name}.jpg" alt="Microsoft Surface Studio" class="background"/>
                         </div>
 
                         <div class="item" data-marker="4">
-                            <img src="assets/img/product/video.jpg" alt="Microsoft Surface Studio" class="background"/>
+                            <img src="assets/img/products/${productForm.name}.jpg" alt="Microsoft Surface Studio" class="background"/>
 
                             <div class="tiles">
                                 <a href="#video" data-gallery="#video" data-source="youtube" data-id="BzMLA8YIgG0">
@@ -71,11 +71,11 @@
                     <hr class="offset-sm visible-sm">
                     <hr class="offset-xs visible-sm">
 
-                    <p class="price">${productForm.price}</p>
-                    <p class="price through">${productForm.price + 1}</p>
+                    <p class="price">${productForm.price} $</p>
+                    <p class="price through">${productForm.price + 1} $</p>
                     <hr class="offset-md">
 
-                    <a href="${pageContext.request.contextPath}/buyProduct?code=${prInfo.code}" ><button class="btn btn-primary rounded"> <i class="ion-bag"></i> Add to cart</button></a>
+                    <a href="${pageContext.request.contextPath}/buyProduct?code=${productForm.code}" ><button class="btn btn-primary rounded"> <i class="ion-bag"></i> Add to cart</button></a>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
 
 <section class="products">
     <div class="container">
-        <h2 class="upp align-center-xs"> Sản phẩm liên quan </h2>
+        <h2 class="upp align-center-xs"> Related products </h2>
         <hr class="offset-lg">
 
         <div class="row">
@@ -94,16 +94,16 @@
                 <div class="col-sm-4 col-md-3 product">
                     <div class="body">
                         <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-                        <a href="./"><img src="assets/img/products/apple-imac-27-retina.jpg" alt="Apple iMac 27 Retina"/></a>
+                        <a href="./"><img src="assets/img/products/${prd.name}.jpg" alt="Apple iMac 27 Retina"/></a>
 
                         <div class="content align-center">
-                            <p class="price">${prd.price}</p>
+                            <p class="price">${prd.price} $</p>
                             <h2 class="h3">${prd.name}</h2>
                             <hr class="offset-sm">
 
                             <a href="${pageContext.request.contextPath}/productInfo?code=${prd.code}" ><button class="btn btn-link"> <i class="ion-android-open"></i> Details</button></a>
 
-                            <a href="${pageContext.request.contextPath}/buyProduct?code=${prInfo.code}" ><button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button></a>
+                            <a href="${pageContext.request.contextPath}/buyProduct?code=${prd.code}" ><button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button></a>
                         </div>
                     </div>
                 </div>

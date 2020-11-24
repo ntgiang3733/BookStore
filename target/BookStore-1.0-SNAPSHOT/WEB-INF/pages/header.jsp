@@ -15,12 +15,9 @@
     <a href="${pageContext.request.contextPath}/signup"> <i class="ion-person"></i> Registration</a>
     <a href="#signin" data-toggle="modal" data-target="#Modal-SignIn"> <i class="ion-unlocked"></i> Sign In</a>
     <c:if test="${pageContext.request.userPrincipal.name != null}">
-        Hello
         <a href="${pageContext.request.contextPath}/accountInfo">${pageContext.request.userPrincipal.name}</a>
         <a href="${pageContext.request.contextPath}/logout">Logout</a>
     </c:if>
-    <a href="./favorites/"> <i class="ion-ios-heart"></i> Favorites </a>
-    <a href="tel:+123456789" class="hidden-xs"> <i class="ion-android-call"></i> 123456789 </a>
 </div>
 
 
@@ -76,7 +73,7 @@
 
         <form:form action="${pageContext.request.contextPath}/productList" method="get">
             <div class="input-group">
-                <input type="text" name="likeName" placeholder="Bạn muốn tìm sách gì ..." required="" class="form-control">
+                <input type="text" name="likeName" placeholder="Title, author, ..." required="" class="form-control">
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-primary"> Search <i class="ion-android-send"></i> </button>
                 </span>

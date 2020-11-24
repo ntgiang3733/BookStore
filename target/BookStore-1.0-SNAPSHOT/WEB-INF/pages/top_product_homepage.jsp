@@ -13,10 +13,10 @@
                     <div class="col-sm-6 col-md-3 product">
                         <div class="body">
                             <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-                            <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}"><img src="assets/img/products/apple-imac-27-retina.jpg" alt="Apple iMac 27 Retina"/></a>
+                            <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}"><img src="assets/img/products/${prInfo.name}.jpg" alt="Apple iMac 27 Retina"/></a>
 
                             <div class="content align-center">
-                                <p class="price">${prInfo.price}</p>
+                                <p class="price">${prInfo.price} $</p>
                                 <h2 class="h3">${prInfo.name}</h2>
                                 <hr class="offset-sm">
 
@@ -30,7 +30,7 @@
 
             <div class="align-right align-center-xs">
                 <hr class="offset-sm">
-                <a href="${pageContext.request.contextPath}/productList?cat=${topProducts.list[0].category.id}"> <h5 class="upp">Xem tất cả ${topProducts.list[0].category.name} </h5> </a>
+                <a href="${pageContext.request.contextPath}/productList?cat=${topProducts.list[0].category.id}"> <h5 class="upp">View all ${topProducts.list[0].category.name} </h5> </a>
             </div>
         </div>
     </section>

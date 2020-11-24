@@ -31,13 +31,13 @@
                             <div class="media">
                                 <div class="media-left">
                                     <a href="${pageContext.request.contextPath}/productInfo?code=${cartLineInfo.productInfo.code}">
-                                        <img class="media-object" src="assets/img/products/ipad-air.jpg" alt="iPad Air"/>
+                                        <img class="media-object" src="assets/img/products/${cartLineInfo.productInfo.name}.jpg" alt="iPad Air"/>
                                     </a>
                                 </div>
                                 <div class="media-body">
                                     <h2 class="h4 media-heading">${cartLineInfo.productInfo.name}</h2>
                                     <label>${cartLineInfo.productInfo.category.name}</label>
-                                    <p class="price">${cartLineInfo.productInfo.price}</p>
+                                    <p class="price">${cartLineInfo.productInfo.price} $</p>
                                 </div>
                                 <div class="controls">
                                     <div class="input-group">
