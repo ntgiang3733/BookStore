@@ -18,7 +18,7 @@
 <hr class="offset-md">
 
 <div class="container checkout">
-    <form action="index.html" method="post">
+    <form:form modelAttribute="cartForm" method="get" action="${pageContext.request.contextPath}/shoppingCartCustomer" >
 
         <div class="row">
 
@@ -73,17 +73,15 @@
                     <div class="col-md-4 hidden-xs">
                     </div>
                     <div class="col-xs-6 col-md-4">
-                        <button class="btn btn-primary pull-right" type="submit">Confirm order</button>
+                        <input type="submit" class="btn btn-primary pull-right" value="Checkout">
+<%--                        <button class="btn btn-primary pull-right" type="submit">Confirm order</button>--%>
                     </div>
                 </div>
                 <hr class="offset-md">
-                <div class="row">
-                    <a href="${pageContext.request.contextPath}/shoppingCartCustomer"><button class="btn btn-primary pull-right">Enter customer infomation</button></a>
-                </div>
             </div>
 
         </div>
-    </form>
+    </form:form>
 </div>
 <hr class="offset-lg">
 <hr class="offset-sm">

@@ -168,6 +168,7 @@ public class MainController {
             customerInfo = new CustomerInfo();
         }
         model.addAttribute("customerForm", customerInfo);
+        model.addAttribute("cartForm", Utils.getCartInfoSession(request));
         return "shoppingCartCustomer";
     }
 
@@ -176,10 +177,30 @@ public class MainController {
     public String shoppingCartCustomerSave(HttpServletRequest request, Model model,
                                            @ModelAttribute("customerForm") @Validated CustomerInfo customerForm,
                                            BindingResult result, final RedirectAttributes redirectAttributes) {
+        //save customer info
         customerForm.setValid(true);
         CartInfo cartInfo = Utils.getCartInfoSession(request);
         cartInfo.setCustomerInfo(customerForm);
-        return "redirect:/shoppingCartConfirmation";
+
+        //confirm & save order
+        //check cart
+        if (cartInfo.isEmpty()) {
+            return "redirect:/shoppingCart";
+        } else if (!cartInfo.isValidCustomer()) {
+            return "redirect:/shoppingCartCustomer";
+        }
+
+        try {
+            orderDAO.saveOrder(cartInfo);
+            System.out.println("save order success");
+        } catch (Exception e) {
+            return "index";
+        }
+
+        Utils.removeCartInSession(request);
+        Utils.storeLastOrderedCartInSession(request, cartInfo);
+
+        return "index";
     }
 
     //GET : check confirmation

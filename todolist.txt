@@ -1,5 +1,4 @@
                                         LIST 1:
--Order
 -Manager product
 -Manager account
 -Manager order
@@ -7,6 +6,8 @@
 
 -----------------------------------------------------------------------------------
                                         LIST 2:
+-generate show order list UI
+-fix error login failed
 -update image product
 -add/substract product in cart
 -Login with fb, gg
