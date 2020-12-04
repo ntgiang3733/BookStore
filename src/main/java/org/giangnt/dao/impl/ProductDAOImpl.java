@@ -43,14 +43,17 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public void save(HttpServletRequest request, ProductInfo productInfo) {
         String code = productInfo.getCode();
+        System.out.println("3");
 
         Product product = null;
         boolean isNew = false;
         if(code != null) {
             product = this.findProduct(code);
+            System.out.println("4");
         }
 
         if(product == null) {
+            System.out.println("5");
             isNew = true;
             product = new Product();
             product.setCreateDate(new Date());
@@ -60,6 +63,7 @@ public class ProductDAOImpl implements ProductDAO {
         product.setName(productInfo.getName());
         product.setPrice(productInfo.getPrice());
         product.setDateUpdated(new Date());
+        System.out.println("6");
 
         if(productInfo.getFileDatas()[0] != null) {
             byte[] image = productInfo.getFileDatas()[0].getBytes();
@@ -67,7 +71,9 @@ public class ProductDAOImpl implements ProductDAO {
                 product.setImage(image);
             }
         }
+        System.out.println("7");
         Commons.doUploadImage(request, productInfo);
+        System.out.println(product);
         if(isNew) {
             this.sessionFactory.getCurrentSession().persist(product);
         }
