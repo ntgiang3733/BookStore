@@ -49,6 +49,9 @@
                 <security:authorize access="hasAnyRole('ROLE_EMPLOYEE')">
                     <li><a href="${pageContext.request.contextPath}/orderList">OrderList</a></li>
                 </security:authorize>
+                <security:authorize access="hasAnyRole('ROLE_MANAGER')">
+                    <li><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
+                </security:authorize>
 
 <%--                <li class="dropdown">--%>
 <%--                    <a href="./store/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--%>

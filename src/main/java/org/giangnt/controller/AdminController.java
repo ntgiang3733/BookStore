@@ -1,13 +1,12 @@
 package org.giangnt.controller;
 
 import org.giangnt.dao.AccountDAO;
+import org.giangnt.dao.CategoryDAO;
 import org.giangnt.dao.OrderDAO;
 import org.giangnt.dao.ProductDAO;
 import org.giangnt.entity.Account;
-import org.giangnt.model.AccountInfo;
-import org.giangnt.model.OrderDetailInfo;
-import org.giangnt.model.OrderInfo;
-import org.giangnt.model.PaginationResult;
+import org.giangnt.entity.Product;
+import org.giangnt.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -39,6 +39,14 @@ public class AdminController {
 
     @Autowired
     private ProductDAO productDAO;
+
+    @Autowired
+    private CategoryDAO categoryDAO;
+
+    @RequestMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
 
     //GET : show sign up page
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -142,5 +150,57 @@ public class AdminController {
         model.addAttribute("orderInfo", orderInfo);
         return "order";
 
+    }
+
+    //GET : show product list
+    @RequestMapping(value = {"/productManager"},method = RequestMethod.GET)
+    public String productManager(Model model,
+                                 @RequestParam(value = "likeName", defaultValue = "") String likeName,
+                                 @RequestParam(value = "page", defaultValue = "1") int page,
+                                 @RequestParam(value = "cat", defaultValue = "") String cat) {
+        final int maxResult = 30;
+        final int maxNavigationPage = 10;
+        PaginationResult<ProductInfo> rs;
+
+        if(cat != null && cat.length() > 0) {
+            rs = categoryDAO.queryProducts(page, maxResult, maxNavigationPage, cat);
+        } else {
+            rs = productDAO.queryProducts(page, maxResult, maxNavigationPage, likeName);
+        }
+
+        if(rs != null) {
+            model.addAttribute("paginationProducts", rs);
+        }
+        return "admin_productManager";
+    }
+
+    //GET : add/edit product page
+    @RequestMapping(value = {"/productInfoManager"}, method = RequestMethod.GET)
+    public String productInfoManager(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
+        ProductInfo productInfo = new ProductInfo();
+        if(code != null && code.length() > 0) {
+            productInfo = productDAO.findProductInfo(code);
+        }
+        model.addAttribute("productInfo", productInfo);
+        return "admin_productInfoManager";
+    }
+
+    //POST : save product
+    @RequestMapping(value = {"/productInfoManager"}, method = RequestMethod.POST)
+    @Transactional(propagation = Propagation.NEVER)
+    public String saveProductInfo(HttpServletRequest request, Model model,
+                                  @ModelAttribute("productInfo") @Validated ProductInfo productInfo,
+                                  BindingResult result, final RedirectAttributes redirectAttributes) {
+        try {
+            System.out.println("1");
+            System.out.println(productInfo);
+            productDAO.save(request, productInfo);
+        } catch (Exception e) {
+            System.out.println("2");
+            String message = e.getMessage();
+            model.addAttribute("message", message);
+            return "admin";
+        }
+        return "admin";
     }
 }

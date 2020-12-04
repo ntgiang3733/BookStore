@@ -102,8 +102,6 @@ public class AccountDAOImpl implements AccountDAO {
         account.setPassword(accountInfo.getPassword());
         account.setUserRole(accountInfo.getUserRole());
         account.setPhoneNumber(accountInfo.getPhoneNumber());
-//        System.out.println("3 " + account.getName());
         this.sessionFactory.getCurrentSession().flush();
-//        System.out.println("4 " + account.getName());
     }
 }

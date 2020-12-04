@@ -36,6 +36,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/assets/js/**").addResourceLocations("/WEB-INF/resources/assets/js/").setCachePeriod(31556926);
         registry.addResourceHandler("/assets/ionicons-2.0.1/**").addResourceLocations("/WEB-INF/resources/assets/ionicons-2.0.1/").setCachePeriod(31556926);
         registry.addResourceHandler("/assets/fonts/**").addResourceLocations("/WEB-INF/resources/assets/fonts/").setCachePeriod(31556926);
+        registry.addResourceHandler("/assets/scss/**").addResourceLocations("/WEB-INF/resources/assets/scss/").setCachePeriod(31556926);
+        registry.addResourceHandler("/assets/vendor/**").addResourceLocations("/WEB-INF/resources/assets/vendor/").setCachePeriod(31556926);
     }
 
     //equivalent for <mvc:default-servlet-handler/> tag
