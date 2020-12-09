@@ -62,7 +62,7 @@ public class CartInfo {
     //update product in cart;
     private void updateProduct(String code, int quantity) {
         CartLineInfo line = this.findLineByCode(code);
-        if (line == null) {
+        if (line != null) {
             if (quantity <= 0) {
                 this.cartLines.remove(line);
             } else {

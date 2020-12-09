@@ -2,6 +2,7 @@
 -Manager product
 -Manager account
 -Manager order
+-Fix add new/edit product
 
 
 -----------------------------------------------------------------------------------

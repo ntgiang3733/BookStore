@@ -48,12 +48,20 @@ public class AdminController {
         return "admin";
     }
 
+    //GET : show sign in page
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+    public String signinHandler(Model model) {
+        AccountInfo accountInfo = new AccountInfo();
+        model.addAttribute("accountInfo", accountInfo);
+        return "1signin";
+    }
+
     //GET : show sign up page
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signupHandler(Model model) {
         AccountInfo accountInfo = new AccountInfo();
         model.addAttribute("accountInfo", accountInfo);
-        return "signup";
+        return "1signup";
     }
 
     //Post : register new account
@@ -100,7 +108,7 @@ public class AdminController {
         AccountInfo accountInfo = null;
         accountInfo = accountDAO.findAccountInfo(userDetails.getUsername());
         model.addAttribute("accountInfo", accountInfo);
-        return "accountInfo";
+        return "1accountInfo";
     }
 
     @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.POST)

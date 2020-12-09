@@ -56,7 +56,7 @@ public class MainController {
         }
         request.getServletContext().setAttribute("topProducts", topProducts);
 
-        return "index";
+        return "1index";
     }
 
     //get product list
@@ -65,7 +65,7 @@ public class MainController {
            @RequestParam(value = "likeName", defaultValue = "") String likeName,
            @RequestParam(value = "page", defaultValue = "1") int page,
            @RequestParam(value = "cat", defaultValue = "") String cat) {
-        final int maxResult = 9;
+        final int maxResult = 12;
         final int maxNavigationPage = 10;
         PaginationResult<ProductInfo> rs;
 
@@ -77,7 +77,7 @@ public class MainController {
         if(rs != null) {
             model.addAttribute("paginationProducts", rs);
         }
-        return "productList";
+        return "1productList";
     }
 
     //GET : show product detail
@@ -95,7 +95,7 @@ public class MainController {
         PaginationResult<ProductInfo> relativeProducts = categoryDAO.queryProducts(1, 4, 10, productInfo.getCategory().getId());
         model.addAttribute("relativeProducts", relativeProducts);
 
-        return "productInfo";
+        return "1productInfo";
     }
 
     //buy product
@@ -127,7 +127,7 @@ public class MainController {
         //get list product in current session
         CartInfo myCart = Utils.getCartInfoSession(request);
         model.addAttribute("cartForm", myCart);
-        return "shoppingCart";
+        return "1shoppingCart";
     }
 
     //POST : update product quantity in cart
@@ -169,7 +169,7 @@ public class MainController {
         }
         model.addAttribute("customerForm", customerInfo);
         model.addAttribute("cartForm", Utils.getCartInfoSession(request));
-        return "shoppingCartCustomer";
+        return "1shoppingCartCustomer";
     }
 
     //POST save customer info
@@ -194,13 +194,13 @@ public class MainController {
             orderDAO.saveOrder(cartInfo);
             System.out.println("save order success");
         } catch (Exception e) {
-            return "index";
+            return "/";
         }
 
         Utils.removeCartInSession(request);
         Utils.storeLastOrderedCartInSession(request, cartInfo);
 
-        return "index";
+        return "1index";
     }
 
     //GET : check confirmation
@@ -249,13 +249,5 @@ public class MainController {
         }
         response.getOutputStream().close();
     }
-
-
-
-
-
-
-
-
 
 }
