@@ -56,7 +56,7 @@ public class MainController {
         }
         request.getServletContext().setAttribute("topProducts", topProducts);
 
-        return "1index";
+        return "index";
     }
 
     //get product list
@@ -77,7 +77,7 @@ public class MainController {
         if(rs != null) {
             model.addAttribute("paginationProducts", rs);
         }
-        return "1productList";
+        return "productList";
     }
 
     //GET : show product detail
@@ -95,7 +95,7 @@ public class MainController {
         PaginationResult<ProductInfo> relativeProducts = categoryDAO.queryProducts(1, 4, 10, productInfo.getCategory().getId());
         model.addAttribute("relativeProducts", relativeProducts);
 
-        return "1productInfo";
+        return "productInfo";
     }
 
     //buy product
@@ -127,7 +127,7 @@ public class MainController {
         //get list product in current session
         CartInfo myCart = Utils.getCartInfoSession(request);
         model.addAttribute("cartForm", myCart);
-        return "1shoppingCart";
+        return "shoppingCart";
     }
 
     //POST : update product quantity in cart
@@ -169,7 +169,7 @@ public class MainController {
         }
         model.addAttribute("customerForm", customerInfo);
         model.addAttribute("cartForm", Utils.getCartInfoSession(request));
-        return "1shoppingCartCustomer";
+        return "shoppingCartCustomer";
     }
 
     //POST save customer info
@@ -200,7 +200,7 @@ public class MainController {
         Utils.removeCartInSession(request);
         Utils.storeLastOrderedCartInSession(request, cartInfo);
 
-        return "1index";
+        return "index";
     }
 
     //GET : check confirmation

@@ -7,7 +7,7 @@
     <title>Sign up</title>
 </head>
 <body>
-    <jsp:include page="1header.jsp"></jsp:include>
+    <jsp:include page="header.jsp"></jsp:include>
 
 
     <div class="page-section">
@@ -99,7 +99,7 @@
 <%--            </div>--%>
 <%--        </div>--%>
 <%--    </div>--%>
-    <jsp:include page="1footer.jsp" />
+    <jsp:include page="footer.jsp" />
 </div>
 </body>
 </html>

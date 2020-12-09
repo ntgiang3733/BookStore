@@ -53,7 +53,7 @@ public class AdminController {
     public String signinHandler(Model model) {
         AccountInfo accountInfo = new AccountInfo();
         model.addAttribute("accountInfo", accountInfo);
-        return "1signin";
+        return "signin";
     }
 
     //GET : show sign up page
@@ -61,7 +61,7 @@ public class AdminController {
     public String signupHandler(Model model) {
         AccountInfo accountInfo = new AccountInfo();
         model.addAttribute("accountInfo", accountInfo);
-        return "1signup";
+        return "signup";
     }
 
     //Post : register new account
@@ -108,7 +108,7 @@ public class AdminController {
         AccountInfo accountInfo = null;
         accountInfo = accountDAO.findAccountInfo(userDetails.getUsername());
         model.addAttribute("accountInfo", accountInfo);
-        return "1accountInfo";
+        return "accountInfo";
     }
 
     @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.POST)

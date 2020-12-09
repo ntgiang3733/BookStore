@@ -7,7 +7,7 @@
     <title>Store</title>
 </head>
 <body>
-<jsp:include page="1header.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="page-section">
     <div class="container" style="background-color: #0000007d;">
@@ -72,7 +72,7 @@
 
 
 
-<jsp:include page="1footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
 

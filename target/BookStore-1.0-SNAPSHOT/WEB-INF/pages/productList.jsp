@@ -7,7 +7,7 @@
     <title>Product List</title>
 </head>
 <body>
-<jsp:include page="1header.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="page-section no-scroll">
     <div class="container pt-4" style="background-color: #0000007d;">
@@ -118,6 +118,6 @@
 <%--    </div>--%>
 <%--</div>--%>
 
-<jsp:include page="1footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
