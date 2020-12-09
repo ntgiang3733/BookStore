@@ -15,7 +15,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5 my-3 wow fadeInUp pt-2" style="background-color: #0000007d;color: white;">
-                    <h5 class="text-center">Đăng nhập vào hệ thống</h5>
+                    <h5 class="text-center">Nhập thông tin tài khoản</h5>
                     <form:form modelAttribute="accountInfo" method="post">
                     <div class="form-group">
                         <label class="fw-medium fg-grey">UserName</label>
