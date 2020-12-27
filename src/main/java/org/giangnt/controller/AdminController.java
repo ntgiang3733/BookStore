@@ -200,7 +200,7 @@ public class AdminController {
                                   @ModelAttribute("productInfo") @Validated ProductInfo productInfo,
                                   BindingResult result, final RedirectAttributes redirectAttributes) {
         try {
-            System.out.println("1");
+            System.out.println("10");
             System.out.println(productInfo);
             productDAO.save(request, productInfo);
         } catch (Exception e) {
