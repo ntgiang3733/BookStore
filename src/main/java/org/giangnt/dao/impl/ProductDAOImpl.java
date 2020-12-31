@@ -57,26 +57,32 @@ public class ProductDAOImpl implements ProductDAO {
             isNew = true;
             product = new Product();
             product.setCreateDate(new Date());
+            Category category = new Category();
+            category.setId("C01");
+            category.setName("English Book");
+            product.setCategory(category);
+            product.setImage(null);
+            product.setCode(code);
         }
 
-        product.setCode(code);
+
         product.setName(productInfo.getName());
         product.setPrice(productInfo.getPrice());
         product.setDateUpdated(new Date());
-        System.out.println("6");
 
-        if(productInfo.getFileDatas()[0] != null) {
-            byte[] image = productInfo.getFileDatas()[0].getBytes();
-            if(image.length > 0) {
-                product.setImage(image);
-            }
-        }
-        System.out.println("7");
-        Commons.doUploadImage(request, productInfo);
-        System.out.println(product);
+
+//        if(productInfo.getFileDatas()[0] != null) {
+//            byte[] image = productInfo.getFileDatas()[0].getBytes();
+//            if(image.length > 0) {
+//                product.setImage(image);
+//            }
+//        }
+//        Commons.doUploadImage(request, productInfo);
+//        System.out.println(product);
         if(isNew) {
             this.sessionFactory.getCurrentSession().persist(product);
         }
+//        this.sessionFactory.getCurrentSession().delete(product);
         this.sessionFactory.getCurrentSession().flush();
     }
 
