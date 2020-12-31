@@ -121,6 +121,17 @@ public class OrderDAOImpl implements OrderDAO {
         return new OrderInfo(order);
     }
 
+    @Override
+    public void deleteOrder(String orderId) {
+        Order order = this.findOrder(orderId);
+        if(order == null) return;
+        List<OrderDetailInfo> orderDetailInfoList = this.listOrderDetailInfo(orderId);
+        for (OrderDetailInfo orderDetailInfo : orderDetailInfoList) {
+            this.sessionFactory.getCurrentSession().delete(this.findOrderDetail(orderDetailInfo.getId()));
+        }
+        this.sessionFactory.getCurrentSession().delete(order);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public List<OrderDetailInfo> listOrderDetailInfo(String orderId) {

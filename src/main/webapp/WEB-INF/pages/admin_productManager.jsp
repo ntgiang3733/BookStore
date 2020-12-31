@@ -2,15 +2,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html>
 <head>
-    <title>Admin</title>
+    <title>Manager Product</title>
 </head>
+
 <body id="page-top">
 
 <div id="wrapper">
     <jsp:include page="admin_menu.jsp"></jsp:include>
+    <script>
+        var prdCode;
+        document.getElementById('prdMenu').setAttribute('class','nav-item active');
+    </script>
 
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
@@ -53,12 +59,16 @@
                                 <c:forEach items="${paginationProducts.list}" var="prd">
                                     <tr>
                                         <td>${prd.code}</td>
-                                        <td>${prd.code}</td>
+                                        <td>
+                                            <img src="assets/img/products/${prd.name}.jpg" width="150" height="150" alt="">
+                                        </td>
                                         <td>${prd.name}</td>
-                                        <td>${prd.price}</td>
+                                        <td>
+                                            <fmt:formatNumber value="${prd.price}" type="currency" />
+                                        </td>
                                         <td>${prd.category.name}</td>
                                         <td><a href="${pageContext.request.contextPath}/productInfoManager?code=${prd.code}">Edit</a> </td>
-                                        <td><a href="#" data-toggle="modal" data-target="#deleteModal">Delete</a> </td>
+                                        <td><a  onclick="prdCode = this.parentElement.parentElement.cells[0].innerHTML" href="#" data-toggle="modal" data-target="#deleteModal">Delete</a> </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -84,13 +94,19 @@
             <div class="modal-body">Select "Delete" below if you are ready to delete your item.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="#">Delete</a>
+                <a onclick="deleteFunc(this)" class="btn btn-primary">Delete</a>
             </div>
         </div>
     </div>
 </div>
 
 </body>
+<script>
+    function deleteFunc(obj) {
+        obj.setAttribute('href', '/BookStore/deletePrd?codeDelete=' + prdCode);
+        obj.click();
+    }
+</script>
 </html>
 
 

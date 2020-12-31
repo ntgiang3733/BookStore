@@ -17,6 +17,9 @@
 
 <div id="wrapper">
     <jsp:include page="admin_menu.jsp"></jsp:include>
+    <script>
+        document.getElementById('prdMenu').setAttribute('class','nav-item active');
+    </script>
 
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">

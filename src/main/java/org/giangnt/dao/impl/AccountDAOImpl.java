@@ -43,6 +43,11 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
+    public void deleteAccount(String userName) {
+        this.sessionFactory.getCurrentSession().delete(findAccount(userName));
+    }
+
+    @Override
     public Account registerNewUserAccount(AccountInfo accountForm) {
         Account account = new Account();
 

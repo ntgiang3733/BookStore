@@ -5,7 +5,6 @@ import org.giangnt.dao.CategoryDAO;
 import org.giangnt.dao.OrderDAO;
 import org.giangnt.dao.ProductDAO;
 import org.giangnt.entity.Account;
-import org.giangnt.entity.Product;
 import org.giangnt.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -159,7 +158,7 @@ public class AdminController {
         return "order";
 
     }
-
+//************************************PRODUCT MANAGER*****************************************************************************
     //GET : show product list
     @RequestMapping(value = {"/productManager"},method = RequestMethod.GET)
     public String productManager(Model model,
@@ -200,15 +199,87 @@ public class AdminController {
                                   @ModelAttribute("productInfo") @Validated ProductInfo productInfo,
                                   BindingResult result, final RedirectAttributes redirectAttributes) {
         try {
-            System.out.println("1");
-            System.out.println(productInfo);
             productDAO.save(request, productInfo);
         } catch (Exception e) {
-            System.out.println("2");
             String message = e.getMessage();
             model.addAttribute("message", message);
             return "admin";
         }
-        return "admin";
+        PaginationResult<ProductInfo> rs = productDAO.queryProducts(1, 30, 10, "");
+        model.addAttribute("paginationProducts", rs);
+        return "admin_productManager";
     }
+    //DELETE : delete prd
+    @RequestMapping(value = {"/deletePrd"}, method = RequestMethod.GET)
+    public String deleteProduct(Model model, @RequestParam(value = "codeDelete", defaultValue = "") String codeDelete) {
+        ProductInfo productInfo = new ProductInfo();
+        if(codeDelete != null && codeDelete.length() > 0) {
+            productDAO.deleteProduct(codeDelete);
+        }
+        PaginationResult<ProductInfo> rs = productDAO.queryProducts(1, 30, 10, "");
+        model.addAttribute("paginationProducts", rs);
+        return "admin_productManager";
+    }
+//************************************PRODUCT MANAGER*****************************************************************************
+
+
+
+
+
+//************************************ACCOUNT MANAGER*****************************************************************************
+    //GET : show acc list
+    @RequestMapping(value = {"/accountManager"},method = RequestMethod.GET)
+    public String accountManager(Model model) {
+        PaginationResult<AccountInfo> rs = accountDAO.listAccountInfo(1,30,10);
+        if(rs != null) {
+            model.addAttribute("paginationAccounts", rs);
+        }
+        return "admin_accountManager";
+    }
+
+
+    //DELETE : delete acc
+    @RequestMapping(value = {"/deleteAcc"}, method = RequestMethod.GET)
+    public String deleteAccount(Model model, @RequestParam(value = "codeDelete", defaultValue = "") String codeDelete) {
+        AccountInfo accountInfo = new AccountInfo();
+        if(codeDelete != null && codeDelete.length() > 0) {
+            accountDAO.deleteAccount(codeDelete);
+        }
+        PaginationResult<AccountInfo> rs = accountDAO.listAccountInfo(1,30,10);
+        if(rs != null) {
+            model.addAttribute("paginationAccounts", rs);
+        }
+        return "admin_accountManager";
+    }
+//************************************ACCOUNT MANAGER*****************************************************************************
+
+
+
+
+//************************************ORDER MANAGER*****************************************************************************
+    //GET : show order list
+    @RequestMapping(value = {"/orderManager"},method = RequestMethod.GET)
+    public String orderManager(Model model) {
+        PaginationResult<OrderInfo> rs = orderDAO.listOrderInfo(1,30,10);
+        if(rs != null) {
+            model.addAttribute("paginationOrders", rs);
+        }
+        return "admin_orderManager";
+    }
+
+
+    //DELETE : delete order
+    @RequestMapping(value = {"/deleteOrder"}, method = RequestMethod.GET)
+    public String deleteOrder(Model model, @RequestParam(value = "codeDelete", defaultValue = "") String codeDelete) {
+        OrderInfo orderInfo = new OrderInfo();
+        if(codeDelete != null && codeDelete.length() > 0) {
+            orderDAO.deleteOrder(codeDelete);
+        }
+        PaginationResult<OrderInfo> rs = orderDAO.listOrderInfo(1,30,10);
+        if(rs != null) {
+            model.addAttribute("paginationOrders", rs);
+        }
+        return "admin_orderManager";
+    }
+//************************************ORDER MANAGER*****************************************************************************
 }

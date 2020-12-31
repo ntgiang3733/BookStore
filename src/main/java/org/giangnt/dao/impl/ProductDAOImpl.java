@@ -87,6 +87,11 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public void deleteProduct(String code) {
+        this.sessionFactory.getCurrentSession().delete(findProduct(code));
+    }
+
+    @Override
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
         return queryProducts(page, maxResult, maxNavigationPage, null);
     }

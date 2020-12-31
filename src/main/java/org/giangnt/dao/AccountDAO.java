@@ -10,6 +10,8 @@ public interface AccountDAO {
 
     public AccountInfo findAccountInfo(String userName);
 
+    public void deleteAccount(String userName);
+
     public Account registerNewUserAccount(AccountInfo accountForm);
 
     public PaginationResult<AccountInfo> listAccountInfo(int page, int maxResult, int maxNavigationPage);

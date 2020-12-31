@@ -12,6 +12,8 @@ public interface ProductDAO {
 
     public ProductInfo findProductInfo(String code);
 
+    public void deleteProduct(String code);
+
     public void save(HttpServletRequest request, ProductInfo productInfo);
 
     //paginate all product
