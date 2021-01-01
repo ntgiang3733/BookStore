@@ -105,7 +105,6 @@ public class ProductDAOImpl implements ProductDAO {
             sql += " and lower(p.name) like :likeName ";
         }
         sql += " order by p.code asc, p.createDate desc ";
-        System.out.println(sql);
         Session session = sessionFactory.getCurrentSession();
         Query<?> query = session.createQuery(sql);
         if(likeName != null && likeName.length() > 0) {

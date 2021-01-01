@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
     <title>Product List</title>
@@ -12,6 +13,23 @@
 <div class="page-section no-scroll">
     <div class="container pt-4" style="background-color: #0000007d;">
         <h2 class="text-center wow fadeIn" style="color: white;">Sản phẩm</h2>
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="btn-group col-1" style="float: right;">
+                <button type="button" style="background-color: #848484ba;border: none;border-radius: 14px;" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sắp xếp
+                </button>
+                <div class="dropdown-menu" style="background-color: #0000007d;">
+                    <a class="dropdown-item active" href="${pageContext.request.contextPath}/productList">Mới nhất</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/productList?sortby=nameAtoZ" style="color: white;">Tên A - Z</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/productList?sortby=nameZtoA" style="color: white;">Tên Z - A</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/productList?sortby=priceAsc" style="color: white;">Giá tăng dần</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/productList?sortby=priceDec" style="color: white;">Giá giảm dần</a>
+                </div>
+            </div>
+        </div>
+
+
         <div class="row justify-content-center mt-5">
 
             <c:forEach items="${paginationProducts.list }" var="prInfo">
@@ -21,7 +39,7 @@
                             <img src="assets/img/products/${prInfo.name}.jpg" width="150" height="150" alt="">
                         </a>
                         <h5 class="fg-gray">${prInfo.name}</h5>
-                        <p class="fs-small" style="color: #a52a2a;">${prInfo.price} $</p>
+                        <p class="fs-small" style="color: #a52a2a;"><fmt:formatNumber value="${prInfo.price}" type="currency" /></p>
                         <div class="row">
                             <div class="col-4 pl-1 pr-0">
                                 <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}">

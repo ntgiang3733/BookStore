@@ -21,6 +21,13 @@
         background-size: cover;
         background-attachment: fixed;
     }
+
+     .dropdown-menu > a:hover, .dropdown-menu > li > a:focus {
+         background-image:none !important;
+     }
+     .dropdown-menu > a:hover, .dropdown-menu > li > a:focus {
+         background-color:blue;
+     }
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0000007d;">
@@ -54,7 +61,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/shoppingCart">Giỏ hàng</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Thanh toán</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/shoppingCartCustomer">Thanh toán</a>
                 </li>
                 <security:authorize access="hasAnyRole('ROLE_MANAGER')">
                     <li class="nav-item">

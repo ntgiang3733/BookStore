@@ -97,7 +97,6 @@ public class AccountDAOImpl implements AccountDAO {
         Account account = null;
         if (userName!=null && userName.length()>0) {
             account = this.findAccount("employee1");
-            System.out.println("2 " + account.getName());
         }
 
         account.setDateUpdated(new Date());

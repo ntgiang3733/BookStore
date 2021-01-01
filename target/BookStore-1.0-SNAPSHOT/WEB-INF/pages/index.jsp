@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <html>
@@ -47,7 +48,7 @@
                                 <img src="assets/img/products/${prInfo.name}.jpg" width="150" height="150" alt="">
                             </a>
                             <h5 class="fg-gray">${prInfo.name}</h5>
-                            <p class="fs-small" style="color: brown;">${prInfo.price} $</p>
+                            <p class="fs-small" style="color: #a52a2a;"><fmt:formatNumber value="${prInfo.price}" type="currency" /></p>
                             <div class="row">
                                 <div class="col-4 pl-1 pr-0">
                                     <a href="${pageContext.request.contextPath}/productInfo?code=${prInfo.code}">

@@ -28,6 +28,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 @Controller
 @Transactional
@@ -64,7 +66,8 @@ public class MainController {
     public String productListHandler(Model model,
            @RequestParam(value = "likeName", defaultValue = "") String likeName,
            @RequestParam(value = "page", defaultValue = "1") int page,
-           @RequestParam(value = "cat", defaultValue = "") String cat) {
+           @RequestParam(value = "cat", defaultValue = "") String cat,
+           @RequestParam(value = "sortby", defaultValue = "") String sortby) {
         final int maxResult = 12;
         final int maxNavigationPage = 10;
         PaginationResult<ProductInfo> rs;
@@ -75,6 +78,25 @@ public class MainController {
             rs = productDAO.queryProducts(page, maxResult, maxNavigationPage, likeName);
         }
         if(rs != null) {
+            if(sortby!= null && sortby.length()>0) {
+                Collections.sort(rs.getList(), new Comparator<ProductInfo>() {
+                    @Override
+                    public int compare(ProductInfo o1, ProductInfo o2) {
+                        switch (sortby) {
+                            case "nameAtoZ" :
+                                return o1.getName().compareTo(o2.getName());
+                            case "nameZtoA" :
+                                return o2.getName().compareTo(o1.getName());
+                            case "priceAsc" :
+                                return o1.getPrice()<o2.getPrice() ? -1 : 1;
+                            case "priceDec" :
+                                return o1.getPrice()>o2.getPrice() ? -1 : 1;
+                        }
+                        return 1;
+                    }
+                });
+            }
+
             model.addAttribute("paginationProducts", rs);
         }
         return "productList";
