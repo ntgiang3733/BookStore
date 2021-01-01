@@ -23,6 +23,7 @@ public class AccountDAOImpl implements AccountDAO {
 
     @Override
     public Account findAccount(String userName) {
+        System.out.println(1);
         Session sess = sessionFactory.getCurrentSession();
         CriteriaBuilder builder = sess.getCriteriaBuilder();
         CriteriaQuery<Account> query = builder.createQuery(Account.class);

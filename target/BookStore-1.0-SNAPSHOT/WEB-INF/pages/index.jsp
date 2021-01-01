@@ -19,13 +19,13 @@
         </div>
         <div class="owl-carousel stack-carousel mt-5 wow fadeInUp">
             <div class="item" style="text-align: center;">
-                <a href="#">
+                <a href="${pageContext.request.contextPath}/productList">
                     <img src="assets/img/sach_tieng_viet.png">
                     <h5 class="fg-gray">Sách Tiếng Việt </h5>
                 </a>
             </div>
             <div class="item" style="text-align: center;">
-                <a href="#">
+                <a href="${pageContext.request.contextPath}/productList">
                     <img src="assets/img/sach_teng_anh.png">
                     <h5 class="fg-gray">Sách Tiếng Anh</h5>
                 </a>

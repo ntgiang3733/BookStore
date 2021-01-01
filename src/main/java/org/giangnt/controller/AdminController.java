@@ -49,8 +49,11 @@ public class AdminController {
 
     //GET : show sign in page
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
-    public String signinHandler(Model model) {
+    public String signinHandler(Model model, @RequestParam(value = "error", required = false)    String error) {
         AccountInfo accountInfo = new AccountInfo();
+        if(error != null && error.length()>0) {
+            model.addAttribute("message","Login failed !");
+        }
         model.addAttribute("accountInfo", accountInfo);
         return "signin";
     }

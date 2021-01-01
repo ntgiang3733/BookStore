@@ -23,6 +23,7 @@
                     <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="password">
                     </div>
+                    <h4 style="color: #ff6363;">${message}</h4>
 
                     <div class="form-group mt-4 text-center">
                         <button class="btn btn-secondary rounded-pill" style="background-color: #0000008a" type="submit">Đăng nhập</button>
