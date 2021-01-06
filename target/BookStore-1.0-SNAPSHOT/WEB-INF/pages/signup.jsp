@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label class="fw-medium fg-grey">Password</label>
-                        <form:input path="password" class="form-control"/>
+                        <form:input type="password" path="password" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label class="fw-medium fg-grey">Phone Number</label>

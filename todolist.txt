@@ -1,21 +1,10 @@
                                         LIST 1:
--Manager product
--Manager account
--Manager order
--Fix add new/edit product
-
-
+-update add/edit product
 -----------------------------------------------------------------------------------
                                         LIST 2:
--generate show order list UI
--change price format(type)
--fix error login failed
 -update image product
--add/substract product in cart
 -Login with fb, gg
 -Send email
 -Remember login
 -Forgot password
--Show modal login/signup when ...
 -encrypt password
--sync login-signup interface

@@ -58,8 +58,8 @@ public class ProductDAOImpl implements ProductDAO {
             product = new Product();
             product.setCreateDate(new Date());
             Category category = new Category();
-            category.setId("C01");
-            category.setName("English Book");
+            category.setId("C02");
+            category.setName("Sách Tiếng Việt");
             product.setCategory(category);
             product.setImage(null);
             product.setCode(code);

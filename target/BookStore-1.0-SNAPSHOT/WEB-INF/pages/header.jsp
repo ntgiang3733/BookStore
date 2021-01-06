@@ -32,7 +32,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0000007d;">
     <div class="container">
-        <a class="navbar-brand" href="homepage.html">
+        <a class="navbar-brand" href="./">
             <img src="assets/img/favicon-light.png" alt="" width="40">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
